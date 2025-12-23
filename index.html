@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta property="og:title" content="【追思】翁小奶 先生 雲端訃告">
+    <meta property="og:description" content="感謝親友的陪伴與關懷，翁小奶先生已化作星辰，守護著他最愛的人。">
+    <meta property="og:image" content="image/Write.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="image/logo.png" type="image/png">
+    
     <title>永恆思念：翁小奶 先生</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600;900&family=Noto+Sans+TC:wght@300;500;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
@@ -84,6 +91,7 @@
         .main-venue { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 30px; text-align: center; line-height: 1.6; }
         
         .timeline { display: flex; justify-content: space-around; border-top: 1px solid rgba(178, 151, 125, 0.1); padding-top: 25px; }
+        .time-node { text-align: center; }
         .time-node span { font-size: 10px; color: var(--gold-leaf); display: block; letter-spacing: 3px; margin-bottom: 5px; }
         .time-node b { font-size: 26px; font-weight: 900; color: var(--ink); }
 
@@ -101,6 +109,7 @@
         .vault-btn { 
             width: 100%; padding: 18px; background: transparent; border: 1px dashed var(--gold-leaf);
             color: var(--gold-leaf); border-radius: 12px; font-size: 13px; font-weight: 700; letter-spacing: 2px;
+            cursor: pointer;
         }
         .vault-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-height: 0; overflow: hidden; transition: max-height 1.2s ease; }
         .vault-grid.open { max-height: 3000px; margin-top: 25px; }
@@ -142,8 +151,9 @@
         #lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); display:none; justify-content:center; align-items:center; z-index:10000; }
         #lightbox img { max-width: 95%; max-height: 85%; object-fit: contain; }
         
-        /* 交通圖片容器樣式 */
-        .info-unit-wrap { cursor: pointer; }
+        .info-unit-wrap { cursor: pointer; text-align: center; }
+        .info-unit-wrap img { width: 100%; border-radius: 8px; transition: transform 0.3s; }
+        .info-unit-wrap:active img { transform: scale(0.96); }
     </style>
 </head>
 <body>
@@ -166,7 +176,7 @@
     <main>
         <section class="revealed">
             <div class="portrait-wrap">
-                <img src="image/IMG_6759.jpeg" onclick="showBox(this.src)">
+                <img src="image/IMG_6759.jpeg" onclick="showBox(this.src)" alt="翁小奶先生 遺像">
             </div>
             <div style="text-align: center;">
                 <p style="font-size: 18px; font-weight: 600; letter-spacing: 6px; margin-bottom: 35px; color: var(--gold-leaf);">愛．永誌不忘</p>
@@ -255,39 +265,39 @@
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="info-unit-wrap" onclick="showBox('image/交通00004.GIF')">
-                        <img src="image/交通00004.GIF" style="width:100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">館內平面地圖</p>
+                        <img src="image/交通00004.GIF" loading="lazy" style="box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">館內平面地圖</p>
                     </div>
                     <div class="info-unit-wrap" onclick="showBox('image/交通00003.GIF')">
-                        <img src="image/交通00003.GIF" style="width:100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">地理位置示意</p>
+                        <img src="image/交通00003.GIF" loading="lazy" style="box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">地理位置示意</p>
                     </div>
 
                     <div class="info-unit-wrap" onclick="showBox('image/交通00002.GIF')">
-                        <img src="image/交通00002.GIF" style="width:100%; border-radius: 8px;">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">接駁專車 S31</p>
+                        <img src="image/交通00002.GIF" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">接駁專車 S31</p>
                     </div>
                     <div class="info-unit-wrap" onclick="showBox('image/交通00001.GIF')">
-                        <img src="image/交通00001.GIF" style="width:100%; border-radius: 8px;">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">公車捷運路線</p>
+                        <img src="image/交通00001.GIF" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">公車捷運路線</p>
                     </div>
 
                     <div class="info-unit-wrap" onclick="showBox('image/交通00007.JPG')">
-                        <img src="image/交通00007.JPG" style="width:100%; border-radius: 8px;">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">停車場入口指引</p>
+                        <img src="image/交通00007.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">停車場入口指引</p>
                     </div>
                     <div class="info-unit-wrap" onclick="showBox('image/交通00006.JPG')">
-                        <img src="image/交通00006.JPG" style="width:100%; border-radius: 8px;">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">館內停車資訊</p>
+                        <img src="image/交通00006.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">館內停車資訊</p>
                     </div>
 
                     <div class="info-unit-wrap" onclick="showBox('image/交通00009.JPG')">
-                        <img src="image/交通00009.JPG" style="width:100%; border-radius: 8px;">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">周邊停車地圖</p>
+                        <img src="image/交通00009.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">周邊停車地圖</p>
                     </div>
                     <div class="info-unit-wrap" onclick="showBox('image/交通00008.JPG')">
-                        <img src="image/交通00008.JPG" style="width:100%; border-radius: 8px;">
-                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷愛館出口動線</p>
+                        <img src="image/交通00008.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); margin-top: 6px; font-weight: 700;">懷愛館出口動線</p>
                     </div>
                 </div>
                 
@@ -296,7 +306,6 @@
                 </p>
             </div>
         </section>
-
 
         <div class="gratitude-wrap" id="thanks">
             <span class="brush-text">致 每一位溫暖的您</span>
@@ -332,7 +341,9 @@
     </main>
 </div>
 
-<div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
+<div id="lightbox" onclick="closeBox()">
+    <img id="lb-img">
+</div>
 
 <script>
     // 滾動偵測與動畫
@@ -359,10 +370,15 @@
         btn.innerText = grid.classList.contains('open') ? "- 收合花禮樣式" : "+ 點擊展開精選花禮樣式";
     }
 
-    // 燈箱放大功能
+    // 燈箱控制
     function showBox(src) {
         document.getElementById('lb-img').src = src;
         document.getElementById('lightbox').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // 禁止背景滾動
+    }
+    function closeBox() {
+        document.getElementById('lightbox').style.display = 'none';
+        document.body.style.overflow = 'auto'; // 恢復背景滾動
     }
 
     // 複製資訊功能
@@ -370,6 +386,8 @@
         const text = "【追思奠禮】翁小奶 先生\n日期：115年01月11日\n地點：台北市懷愛館 景仰樓 3F 至美一廳\n家奠：07:50\n公奠：08:30";
         navigator.clipboard.writeText(text).then(() => {
             alert('奠禮資訊已複製到剪貼簿');
+        }).catch(err => {
+            console.error('無法複製', err);
         });
     }
 
@@ -378,7 +396,7 @@
         const audio = document.getElementById('bgm');
         if(audio && audio.paused) {
             audio.volume = 0.2;
-            audio.play().catch(() => {});
+            audio.play().catch(e => console.log("音檔載入失敗或被瀏覽器阻擋"));
         }
     }, { once: true });
 </script>
