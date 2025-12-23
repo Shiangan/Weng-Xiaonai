@@ -15,7 +15,7 @@
             --taupe: #8d867e;        
             --vermilion: #a43e34;    
             --glass: rgba(255, 255, 255, 0.45);
-        } /* 補上閉合括號 */
+        }
 
         @font-face {
             font-family: 'ZF-Font';
@@ -141,6 +141,9 @@
 
         #lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); display:none; justify-content:center; align-items:center; z-index:10000; }
         #lightbox img { max-width: 95%; max-height: 85%; object-fit: contain; }
+        
+        /* 交通圖片容器樣式 */
+        .info-unit-wrap { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -204,7 +207,7 @@
                     <div class="time-node"><span>公奠禮</span><b>08:30</b></div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=台北市懷愛館" class="nav-link">📍 開啟導航前往會場</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=台北市懷愛館" target="_blank" class="nav-link">📍 開啟導航前往會場</a>
         </section>
 
         <section>
@@ -220,7 +223,7 @@
 
         <section style="text-align: center;">
             <div class="label-tag">電子訃聞 ‧ 詳情參閱</div>
-            <img src="image/IMG_6833.jpeg" style="max-width: 85%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" onclick="showBox(this.src)">
+            <img src="image/IMG_6833.jpeg" style="width: 100%; max-width: 350px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer;" onclick="showBox(this.src)">
             <p style="font-size:12px; color:var(--gold-leaf); margin-top:15px; letter-spacing: 2px;">( 點擊圖片可放大閱讀全文 )</p>
         </section>
 
@@ -236,6 +239,64 @@
                 </div>
             </div>
         </section>
+
+        <section>
+            <div class="label-tag">會場位置與交通資訊</div>
+            <div class="glass-card">
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <div class="main-venue" style="margin-bottom: 10px;">台北市懷愛館 (原二殯)</div>
+                    <p style="font-size: 13px; color: var(--taupe); margin-bottom: 20px;">台北市大安區辛亥路三段 330 號</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台北市懷愛館" target="_blank" class="nav-link" style="margin-top: 0; background: rgba(178, 151, 125, 0.05);">
+                        📍 點擊開啟 Google 地圖導航
+                    </a>
+                </div>
+
+                <div class="section-divider" style="margin: 25px auto;"></div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00004.GIF')">
+                        <img src="image/交通00004.GIF" style="width:100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">館內平面地圖</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00003.GIF')">
+                        <img src="image/交通00003.GIF" style="width:100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">地理位置示意</p>
+                    </div>
+
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00002.GIF')">
+                        <img src="image/交通00002.GIF" style="width:100%; border-radius: 8px;">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">接駁專車 S31</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00001.GIF')">
+                        <img src="image/交通00001.GIF" style="width:100%; border-radius: 8px;">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">公車捷運路線</p>
+                    </div>
+
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00007.JPG')">
+                        <img src="image/交通00007.JPG" style="width:100%; border-radius: 8px;">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">停車場入口指引</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00006.JPG')">
+                        <img src="image/交通00006.JPG" style="width:100%; border-radius: 8px;">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">館內停車資訊</p>
+                    </div>
+
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00009.JPG')">
+                        <img src="image/交通00009.JPG" style="width:100%; border-radius: 8px;">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">周邊停車地圖</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00008.JPG')">
+                        <img src="image/交通00008.JPG" style="width:100%; border-radius: 8px;">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷愛館出口動線</p>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-size: 11px; color: var(--taupe); margin-top: 25px; font-style: italic;">
+                    * 點擊圖片可查看清晰原圖 *
+                </p>
+            </div>
+        </section>
+
 
         <div class="gratitude-wrap" id="thanks">
             <span class="brush-text">致 每一位溫暖的您</span>
@@ -315,7 +376,7 @@
     // 自動播放背景音樂
     document.addEventListener('click', () => {
         const audio = document.getElementById('bgm');
-        if(audio.paused) {
+        if(audio && audio.paused) {
             audio.volume = 0.2;
             audio.play().catch(() => {});
         }
