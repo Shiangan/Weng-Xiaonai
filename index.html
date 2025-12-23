@@ -60,6 +60,7 @@
         .portrait-wrap img { 
             width: 100%; display: block; border-radius: 2px; 
             box-shadow: 0 20px 50px rgba(178, 151, 125, 0.15);
+            cursor: pointer;
         }
 
         section { 
@@ -217,7 +218,6 @@
                     <div class="time-node"><span>公奠禮</span><b>08:30</b></div>
                 </div>
             </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=台北市懷愛館" target="_blank" class="nav-link">📍 開啟導航前往會場</a>
         </section>
 
         <section>
@@ -238,80 +238,74 @@
         </section>
 
         <section>
-    <div class="label-tag">致贈莊嚴花禮</div>
-    <div class="flower-vault">
-        <button class="vault-btn" id="fBtn" onclick="toggleF()">+ 點擊展開精選花禮樣式</button>
-        <div class="vault-grid" id="fGrid">
-            <div class="flower-unit" onclick="showBox('image/花籃A款.JPG')"><img src="image/花籃A款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 A</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$2,500</div></div>
-            <div class="flower-unit" onclick="showBox('image/花籃B款.JPG')"><img src="image/花籃B款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 B</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$3,000</div></div>
-            <div class="flower-unit" onclick="showBox('image/花籃C款.JPG')"><img src="image/花籃C款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 C</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$3,500</div></div>
-            <div class="flower-unit" onclick="showBox('image/花籃D款.JPG')"><img src="image/花籃D款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 D</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$4,500</div></div>
-            <div class="flower-unit" onclick="showBox('image/花籃E款.JPG')"><img src="image/花籃E款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 E</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$5,000</div></div>
-            <div class="flower-unit" onclick="showBox('image/花籃F款.JPG')"><img src="image/花籃F款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 F</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$5,500</div></div>
-            <div class="flower-unit" onclick="showBox('image/花籃G款.JPG')"><img src="image/花籃G款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 G</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$6,000</div></div>
-            <div class="flower-unit" onclick="showBox('image/花籃H款.JPG')"><img src="image/花籃H款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 H</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$6,500</div></div>
-        </div>
-    </div>
-</section>
-        
+            <div class="label-tag">致贈莊嚴花禮</div>
+            <div class="flower-vault">
+                <button class="vault-btn" id="fBtn" onclick="toggleF()">+ 點擊展開精選花禮樣式</button>
+                <div class="vault-grid" id="fGrid">
+                    <div class="flower-unit" onclick="showBox('image/花籃A款.JPG')"><img src="image/花籃A款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 A</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$2,500</div></div>
+                    <div class="flower-unit" onclick="showBox('image/花籃B款.JPG')"><img src="image/花籃B款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 B</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$3,000</div></div>
+                    <div class="flower-unit" onclick="showBox('image/花籃C款.JPG')"><img src="image/花籃C款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 C</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$3,500</div></div>
+                    <div class="flower-unit" onclick="showBox('image/花籃D款.JPG')"><img src="image/花籃D款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 D</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$4,500</div></div>
+                    <div class="flower-unit" onclick="showBox('image/花籃E款.JPG')"><img src="image/花籃E款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 E</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$5,000</div></div>
+                    <div class="flower-unit" onclick="showBox('image/花籃F款.JPG')"><img src="image/花籃F款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 F</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$5,500</div></div>
+                    <div class="flower-unit" onclick="showBox('image/花籃G款.JPG')"><img src="image/花籃G款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 G</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$6,000</div></div>
+                    <div class="flower-unit" onclick="showBox('image/花籃H款.JPG')"><img src="image/花籃H款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 H</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$6,500</div></div>
+                </div>
+            </div>
+        </section>
+
         <section>
-    <div class="label-tag">會場位置與交通資訊</div>
-    <div class="glass-card">
-        <div style="text-align: center; margin-bottom: 25px;">
-            <div class="main-venue" style="margin-bottom: 10px;">台北市懷愛館 (原二殯)</div>
-            <p style="font-size: 13px; color: var(--taupe); margin-bottom: 20px;">台北市大安區辛亥路三段 330 號</p>
-            
-            <a href="https://www.google.com/maps/search/?api=1&query=台北市大安區辛亥路三段330號" target="_blank" class="nav-link" style="margin-top: 0; background: rgba(178, 151, 125, 0.05);">
-                📍 點擊開啟 Google 地圖導航
-            </a>
-        </div>
+            <div class="label-tag">會場位置與交通資訊</div>
+            <div class="glass-card">
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <div class="main-venue" style="margin-bottom: 10px;">台北市懷愛館 (原二殯)</div>
+                    <p style="font-size: 13px; color: var(--taupe); margin-bottom: 20px;">台北市大安區辛亥路三段 330 號</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=台北市懷愛館" target="_blank" class="nav-link" style="margin-top: 0; background: rgba(178, 151, 125, 0.05);">
+                        📍 點擊開啟 Google 地圖導航
+                    </a>
+                </div>
 
-        <div class="section-divider" style="margin: 25px auto;"></div>
+                <div class="section-divider" style="margin: 25px auto;"></div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-            <div class="info-unit-wrap" onclick="showBox('image/交通00004.GIF')">
-                <img src="image/交通00004.GIF" loading="lazy" style="width:100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">館內平面地圖</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00004.GIF')">
+                        <img src="image/交通00004.GIF" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷恩專車</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00003.GIF')">
+                        <img src="image/交通00003.GIF" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷恩專車</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00002.GIF')">
+                        <img src="image/交通00002.GIF" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷恩專車</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00001.GIF')">
+                        <img src="image/交通00001.GIF" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷恩專車</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00007.JPG')">
+                        <img src="image/交通00007.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷恩專車</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00006.JPG')">
+                        <img src="image/交通00006.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">館內停車資訊</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00009.JPG')">
+                        <img src="image/交通00009.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷恩專車</p>
+                    </div>
+                    <div class="info-unit-wrap" onclick="showBox('image/交通00008.JPG')">
+                        <img src="image/交通00008.JPG" loading="lazy">
+                        <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷恩專車</p>
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 11px; color: var(--taupe); margin-top: 25px; font-style: italic;">
+                    * 點擊圖片可查看清晰原圖 *
+                </p>
             </div>
-            <div class="info-unit-wrap" onclick="showBox('image/交通00003.GIF')">
-                <img src="image/交通00003.GIF" loading="lazy" style="width:100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">地理位置示意</p>
-            </div>
-
-            <div class="info-unit-wrap" onclick="showBox('image/交通00002.GIF')">
-                <img src="image/交通00002.GIF" loading="lazy" style="width:100%; border-radius: 8px;">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">接駁專車 S31</p>
-            </div>
-            <div class="info-unit-wrap" onclick="showBox('image/交通00001.GIF')">
-                <img src="image/交通00001.GIF" loading="lazy" style="width:100%; border-radius: 8px;">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">公車捷運路線</p>
-            </div>
-
-            <div class="info-unit-wrap" onclick="showBox('image/交通00007.JPG')">
-                <img src="image/交通00007.JPG" loading="lazy" style="width:100%; border-radius: 8px;">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">停車場入口指引</p>
-            </div>
-            <div class="info-unit-wrap" onclick="showBox('image/交通00006.JPG')">
-                <img src="image/交通00006.JPG" loading="lazy" style="width:100%; border-radius: 8px;">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">館內停車資訊</p>
-            </div>
-
-            <div class="info-unit-wrap" onclick="showBox('image/交通00009.JPG')">
-                <img src="image/交通00009.JPG" loading="lazy" style="width:100%; border-radius: 8px;">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">周邊停車地圖</p>
-            </div>
-            <div class="info-unit-wrap" onclick="showBox('image/交通00008.JPG')">
-                <img src="image/交通00008.JPG" loading="lazy" style="width:100%; border-radius: 8px;">
-                <p style="font-size: 11px; color: var(--gold-leaf); text-align: center; margin-top: 6px; font-weight: 700;">懷愛館出口動線</p>
-            </div>
-        </div>
-        
-        <p style="text-align: center; font-size: 11px; color: var(--taupe); margin-top: 25px; font-style: italic;">
-            * 點擊圖片可查看清晰原圖 *
-        </p>
-    </div>
-</section>
-
+        </section>
 
         <div class="gratitude-wrap" id="thanks">
             <span class="brush-text">致 每一位溫暖的您</span>
@@ -348,11 +342,11 @@
 </div>
 
 <div id="lightbox" onclick="closeBox()">
-    <img id="lb-img">
+    <img id="lb-img" src="">
 </div>
 
 <script>
-    // 滾動偵測與動畫
+    // 1. 滾動偵測與動畫
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -368,41 +362,68 @@
 
     document.querySelectorAll('section, #thanks').forEach(s => observer.observe(s));
 
-    // 切換花禮展開
+    // 2. 切換花禮展開
     function toggleF() {
         const grid = document.getElementById('fGrid');
         const btn = document.getElementById('fBtn');
+        if (!grid || !btn) return;
         grid.classList.toggle('open');
         btn.innerText = grid.classList.contains('open') ? "- 收合花禮樣式" : "+ 點擊展開精選花禮樣式";
     }
 
-    // 燈箱控制
+    // 3. 燈箱控制
     function showBox(src) {
-        document.getElementById('lb-img').src = src;
-        document.getElementById('lightbox').style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // 禁止背景滾動
+        const lb = document.getElementById('lightbox');
+        const img = document.getElementById('lb-img');
+        if (!lb || !img) return;
+        img.src = src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; 
     }
     function closeBox() {
-        document.getElementById('lightbox').style.display = 'none';
-        document.body.style.overflow = 'auto'; // 恢復背景滾動
+        const lb = document.getElementById('lightbox');
+        if (!lb) return;
+        lb.style.display = 'none';
+        document.body.style.overflow = 'auto'; 
     }
 
-    // 複製資訊功能
+    // 4. 複製資訊功能 (增強相容性)
     function copyInfo() {
         const text = "【追思奠禮】翁小奶 先生\n日期：115年01月11日\n地點：台北市懷愛館 景仰樓 3F 至美一廳\n家奠：07:50\n公奠：08:30";
-        navigator.clipboard.writeText(text).then(() => {
-            alert('奠禮資訊已複製到剪貼簿');
-        }).catch(err => {
-            console.error('無法複製', err);
-        });
+        
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('奠禮資訊已複製到剪貼簿');
+            }).catch(() => {
+                fallbackCopyTextToClipboard(text);
+            });
+        } else {
+            fallbackCopyTextToClipboard(text);
+        }
     }
 
-    // 自動播放背景音樂
+    function fallbackCopyTextToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed"; 
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert('奠禮資訊已複製到剪貼簿');
+        } catch (err) {
+            alert('抱歉，您的裝置不支援自動複製，請手動截圖。');
+        }
+        document.body.removeChild(textArea);
+    }
+
+    // 5. 自動播放背景音樂 (點擊觸發)
     document.addEventListener('click', () => {
         const audio = document.getElementById('bgm');
         if(audio && audio.paused) {
             audio.volume = 0.2;
-            audio.play().catch(e => console.log("音檔載入失敗或被瀏覽器阻擋"));
+            audio.play().catch(e => console.log("音樂播放受限"));
         }
     }, { once: true });
 </script>
