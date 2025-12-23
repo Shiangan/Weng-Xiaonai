@@ -3,309 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="format-detection" content="telephone=no">
     <title>永恆思念：翁小奶 先生</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;600;900&family=Noto+Sans+TC:wght@300;500&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-body: #f5f1e8;      /* 絲絨奶茶底色 */
-            --paper: #ffffff;        /* 紙張純白 */
-            --ink: #2c2925;          /* 暖墨黑 */
-            --gold: #b2967d;         /* 質感香檳金 */
-            --sub-text: #7a7369;     /* 沉穩灰 */
-            --seal-red: #a53d32;     /* 職人朱印紅 */
-            --accent-green: #06C755; /* LINE 品牌綠 */
+            --bg-sand: #f8f6f2;      
+            --paper: #ffffff;        
+            --ink: #2e2b28;          
+            --gold: #b2977d;         
+            --taupe: #8d867e;        
+            --seal-red: #a43e34;     
+            --line-green: #06C755;   
         }
 
-        /* 杜絕溢位與亂跳 */
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
+        /* 頂級重設：徹底封鎖雜亂跳行 */
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; border: none; outline: none; }
         
         html, body { 
-            width: 100%; 
-            overflow-x: hidden; 
-            background-color: var(--bg-body); 
-            color: var(--ink); 
-            font-family: 'Noto Serif TC', 'Noto Sans TC', serif; 
-            line-height: 2.2;
+            width: 100%; overflow-x: hidden; background-color: var(--bg-sand); 
+            color: var(--ink); font-family: 'Noto Serif TC', serif; line-height: 2.2;
         }
 
-        .universal-wrapper { 
-            width: 100%; 
-            max-width: 500px; /* 針對大手機進行閱讀優化 */
-            margin: 0 auto; 
-            background-color: var(--paper); 
-            min-height: 100vh;
-            box-shadow: 0 0 60px rgba(130, 115, 95, 0.15);
-            position: relative;
+        .master-container { 
+            width: 100%; max-width: 500px; margin: 0 auto; 
+            background-color: var(--bg-sand); min-height: 100vh; position: relative;
         }
 
-        /* 頂部標題：保證不折行 */
-        header { padding: 60px 20px 30px; text-align: center; }
-        .top-logo { width: 85px; margin-bottom: 25px; filter: sepia(0.2); }
-        .hero-title-group { width: 100%; overflow: hidden; }
-        .hero-lifespan { font-size: 13px; letter-spacing: 6px; color: var(--gold); font-weight: 500; margin-bottom: 12px; }
-        .hero-name { 
-            font-size: clamp(32px, 9.5vw, 54px); 
-            font-weight: 900; 
-            letter-spacing: 0.25em; 
-            white-space: nowrap; /* 強制不換行 */
-            display: inline-block;
-            margin-left: 0.25em;
+        header { padding: 90px 20px 60px; text-align: center; }
+        .logo-symbol { width: 80px; margin-bottom: 35px; opacity: 0.9; }
+        .hero-title-box { white-space: nowrap; }
+        .hero-period { font-size: 13px; letter-spacing: 9px; color: var(--gold); font-weight: 500; margin-bottom: 12px; }
+        .hero-name-big { 
+            font-size: clamp(34px, 11vw, 54px); font-weight: 900; 
+            letter-spacing: 0.35em; display: inline-block; margin-left: 0.35em; 
         }
 
-        /* 照片區域 */
-        .photo-wrap { position: relative; width: 86%; margin: 0 auto 55px; }
-        .photo-wrap img { width: 100%; display: block; border-radius: 2px; box-shadow: 0 20px 45px rgba(0,0,0,0.1); }
-        .photo-wrap::after { 
-            content: ""; position: absolute; top: 15px; left: 15px; width: 100%; height: 100%; 
-            border: 1px solid var(--gold); z-index: -1; opacity: 0.3;
+        .portrait-frame { position: relative; width: 84%; margin: 0 auto 70px; }
+        .portrait-frame img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 30px 65px rgba(45, 42, 39, 0.12); }
+        .portrait-frame::after { 
+            content: ""; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; 
+            border: 1px solid var(--gold); z-index: -1; opacity: 0.2;
         }
 
-        /* 內容章節動效 */
-        section { padding: 45px 30px; opacity: 0; transform: translateY(25px); transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
+        section { padding: 60px 30px; opacity: 0; transform: translateY(30px); transition: 1.8s cubic-bezier(0.15, 1, 0.2, 1); }
         section.revealed { opacity: 1; transform: translateY(0); }
 
-        .section-tag { 
-            font-size: 12px; letter-spacing: 10px; color: var(--gold); text-align: center; 
-            margin-bottom: 45px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 15px;
+        .meta-tag { font-size: 11px; letter-spacing: 12px; color: var(--gold); text-align: center; margin-bottom: 50px; font-weight: 700; text-indent: 12px; }
+        .intro-passage { text-align: center; font-size: 18px; color: var(--taupe); letter-spacing: 1.2px; }
+        .ink-focus { color: var(--ink); font-weight: 700; border-bottom: 1px solid rgba(178, 151, 125, 0.3); }
+
+        .date-display-hero { text-align: center; margin: 55px 0; }
+        .date-big-num { font-size: clamp(70px, 20vw, 95px); font-weight: 900; line-height: 0.85; letter-spacing: -3px; }
+        .date-week-label { font-size: 19px; color: var(--gold); font-weight: 600; letter-spacing: 15px; margin-top: 20px; text-indent: 15px; }
+
+        .info-card-premium { 
+            background: rgba(255, 255, 255, 0.65); padding: 40px 25px; border-radius: 20px; 
+            margin-bottom: 30px; text-align: center; backdrop-filter: blur(15px);
+            box-shadow: 0 12px 40px rgba(178, 151, 125, 0.06);
+            border: 1px solid rgba(255,255,255,0.4);
         }
-        .section-tag::before, .section-tag::after { content: ""; width: 25px; height: 1px; background: var(--gold); opacity: 0.4; }
+        .card-label-small { font-size: 10px; color: var(--gold); font-weight: 700; letter-spacing: 6px; display: block; margin-bottom: 16px; }
+        .card-value-main { font-size: 21px; font-weight: 700; color: var(--ink); line-height: 1.6; }
 
-        .body-text { text-align: center; font-size: 16.5px; color: var(--sub-text); line-height: 2.7; letter-spacing: 1.5px; }
-        .ink-bold { color: var(--ink); font-weight: 700; border-bottom: 1.5px solid rgba(178, 150, 125, 0.3); }
-
-        /* 115.01.11 視覺展示 */
-        .date-hero { text-align: center; margin: 45px 0; }
-        .date-num { font-size: clamp(65px, 18vw, 90px); font-weight: 900; line-height: 1; color: var(--ink); letter-spacing: -1px; }
-        .date-day { font-size: 19px; color: var(--gold); font-weight: 600; letter-spacing: 12px; margin-top: 15px; text-indent: 12px; }
-
-        /* 資訊卡片 */
-        .card-box { 
-            background: #fff; padding: 30px 25px; border-radius: 4px; border: 1px solid #f0ede8;
-            box-shadow: 0 10px 25px rgba(178, 150, 125, 0.06); margin-bottom: 25px; 
+        .time-split-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; margin-top: 35px; padding-top: 35px; 
+            border-top: 1px dashed rgba(178, 151, 125, 0.3); 
         }
-        .card-label { font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 4px; display: block; margin-bottom: 12px; }
-        .card-value { font-size: 20px; font-weight: 700; color: var(--ink); line-height: 1.5; }
+        .time-cell b { font-size: 44px; display: block; line-height: 1; margin-bottom: 6px; }
+        .time-cell span { font-size: 12px; color: var(--taupe); letter-spacing: 4px; }
 
-        .time-split { display: grid; grid-template-columns: 1fr 1fr; margin-top: 30px; padding-top: 30px; border-top: 1px dashed #eee; }
-        .time-cell b { font-size: 38px; color: var(--ink); display: block; line-height: 1.1; }
-        .time-cell span { font-size: 12px; color: var(--sub-text); letter-spacing: 4px; }
-
-        /* ✍️ 職人手寫感感謝區 */
-        .gratitude-area { 
-            background: linear-gradient(to bottom, var(--paper), var(--bg-body)); 
-            padding: 120px 35px; text-align: center; 
+        /* 💐 花禮精品化互動 */
+        .flower-luxury-container { background: rgba(178, 151, 125, 0.05); border-radius: 20px; padding: 40px 20px; text-align: center; }
+        .flower-trigger-btn { 
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px; 
+            color: var(--gold); font-weight: 700; font-size: 15px; letter-spacing: 3px; cursor: pointer;
+            padding: 15px 32px; border: 1px solid rgba(178, 151, 125, 0.3); border-radius: 50px;
+            background: rgba(255, 255, 255, 0.4); transition: 0.4s;
         }
-        .handwritten-line { 
-            font-family: 'Ma Shan Zheng', 'Noto Sans TC', cursive;
-            font-size: clamp(19px, 5.5vw, 24px); 
-            color: #3d3935; letter-spacing: 4px; margin-bottom: 30px; 
+        .flower-trigger-btn.active { background: var(--gold); color: #fff; }
+        .flower-trigger-btn span { font-size: 22px; line-height: 1; transition: 0.5s; font-weight: 300; }
+        .flower-trigger-btn.active span { transform: rotate(45deg); }
+
+        .flower-grid-hidden { 
+            max-height: 0; overflow: hidden; transition: all 0.8s ease; 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; opacity: 0;
+        }
+        .flower-grid-hidden.open { max-height: 800px; opacity: 1; margin-top: 40px; }
+        .flower-card-unit { background: var(--paper); padding: 12px; border-radius: 12px; }
+        .flower-card-unit img { width: 100%; border-radius: 8px; margin-bottom: 12px; }
+
+        /* ✍️ 感謝區：終極防跳行設計 */
+        .gratitude-immersion-area { 
+            padding: 140px 20px; text-align: center; background: linear-gradient(to bottom, var(--bg-sand), #eeeae3); 
+        }
+        .ink-brush-line { 
+            font-family: 'Ma Shan Zheng', cursive; 
+            font-size: clamp(20px, 5.5vw, 25px); 
+            color: #383431; letter-spacing: 3px; margin-bottom: 35px; 
+            display: block; white-space: nowrap; width: 100%;
             opacity: 0; transform: translateY(15px); transition: 2s;
         }
-        .handwritten-line.active { opacity: 0.9; transform: translateY(0); }
+        .ink-brush-line.active { opacity: 0.9; transform: translateY(0); }
         
-        .signature-seal { 
-            margin-top: 80px; display: flex; align-items: center; justify-content: center; gap: 20px;
-            opacity: 0; transition: 2.5s; padding-top: 50px; border-top: 1px solid rgba(178, 150, 125, 0.2);
+        .seal-signature-box { 
+            margin-top: 100px; display: flex; align-items: center; justify-content: center; gap: 20px;
+            opacity: 0; transition: 2.5s; 
         }
-        .signature-seal.active { opacity: 1; }
-        .sig-bold { font-size: 24px; font-weight: 700; letter-spacing: 8px; color: var(--ink); }
-        .red-seal { 
-            width: 50px; height: 50px; border: 2.5px solid var(--seal-red); color: var(--seal-red);
-            font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center;
-            line-height: 1.1; transform: rotate(-5deg); 
+        .seal-signature-box.active { opacity: 1; }
+        .signature-text { font-size: 26px; font-weight: 700; letter-spacing: 10px; text-indent: 10px; }
+
+        /* 💎 最高級隱匿式聯繫卡片 */
+        .contact-premium-section { padding: 0 30px 80px; background: #eeeae3; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .contact-card-v2 { 
+            background: rgba(255, 255, 255, 0.75); padding: 35px 15px; border-radius: 18px;
+            text-align: center; text-decoration: none; border: 1px solid rgba(178, 151, 125, 0.15);
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .contact-card-v2:active { transform: scale(0.96); background: #fff; }
+        .contact-label { font-size: 10px; color: var(--gold); font-weight: 700; letter-spacing: 3px; margin-bottom: 12px; display: block; }
+        .contact-name { font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: 1px; margin-bottom: 15px; display: block; }
+        .contact-action-btn { 
+            font-size: 11px; color: var(--gold); border: 1px solid var(--gold); 
+            padding: 6px 15px; border-radius: 30px; font-weight: 500;
         }
 
-        /* 按鈕系統 */
-        .btn-ui { 
-            display: block; width: 100%; padding: 20px; text-align: center; text-decoration: none; 
-            border: 1px solid var(--gold); color: var(--gold); font-weight: 700; 
-            letter-spacing: 6px; font-size: 14px; margin-top: 15px; border-radius: 4px;
+        .btn-full-cta { 
+            display: block; width: 100%; padding: 22px; text-align: center; text-decoration: none; 
+            background: var(--line-green); color: #fff; font-weight: 700; letter-spacing: 6px; 
+            font-size: 15px; border-radius: 14px; margin-top: 20px; box-shadow: 0 10px 25px rgba(6, 199, 85, 0.15);
         }
-        .btn-line { background: var(--accent-green); color: #fff; border: none; }
 
-        footer { padding: 90px 30px 150px; text-align: center; }
+        footer { padding: 100px 30px 150px; text-align: center; opacity: 0.8; }
         
-        /* 懸浮導覽 */
-        .float-nav { position: fixed; bottom: 35px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
-        .float-nav img { width: 56px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12)); }
+        .floating-shortcuts { position: fixed; bottom: 40px; right: 25px; display: flex; flex-direction: column; gap: 18px; z-index: 9999; }
+        .floating-shortcuts img { width: 62px; filter: drop-shadow(0 12px 30px rgba(0,0,0,0.15)); }
 
-        /* 燈箱功能 */
-        #zoomOverlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(245, 241, 232, 0.98); display:none; justify-content:center; align-items:center; z-index:10000; }
-        #zoomOverlay img { max-width: 92%; max-height: 85%; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.1); }
-        
-        .catalog-grid { display: none; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
-        .catalog-item { background: #fff; padding: 12px; border-radius: 4px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-        .catalog-item img { width: 100%; border-radius: 2px; }
+        #immersion-lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(248, 246, 242, 0.99); display:none; justify-content:center; align-items:center; z-index:100000; }
+        #immersion-lightbox img { max-width: 90%; max-height: 80%; border-radius: 4px; box-shadow: 0 0 40px rgba(0,0,0,0.08); }
     </style>
 </head>
 <body>
 
-<audio id="bgm" loop><source src="Misson Part 1.mp3" type="audio/mp3"></audio>
+<audio id="bgm-player" loop><source src="Misson Part 1.mp3" type="audio/mp3"></audio>
 
-<div class="universal-wrapper">
+<div class="master-container">
     <header>
-        <img src="image/logo.png" class="top-logo">
-        <div class="hero-title-group">
-            <div class="hero-lifespan">1935 — 2025</div>
-            <h1 class="hero-name">翁小奶 先生</h1>
-        </div>
-        <div style="display: flex; justify-content: center; gap: 12px; margin-top: 10px;">
-            <a href="javascript:void(0)" onclick="copyData()" style="font-size: 11px; text-decoration: none; color: var(--gold); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 30px;">一鍵複製資訊</a>
-            <a href="https://line.me/R/msg/text/?【追思】翁小奶 先生 115.01.11 追思奠禮%0ahttps://24hour.台灣/Weng-Xiaonai" style="font-size: 11px; text-decoration: none; color: var(--gold); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 30px;">分享親友</a>
+        <img src="image/logo.png" class="logo-symbol">
+        <div class="hero-title-box">
+            <div class="hero-period">1935 — 2025</div>
+            <h1 class="hero-name-big">翁小奶 先生</h1>
         </div>
     </header>
 
     <main>
-        <section class="reveal-el">
-            <div class="photo-wrap">
-                <img src="image/IMG_6759.jpeg" onclick="openLightbox(this.src)">
+        <section class="revealed">
+            <div class="portrait-frame">
+                <img src="image/IMG_5803.jpg" onclick="openLightbox(this.src)">
             </div>
-            <div class="body-text">
-                <p style="font-size: 19px; color: var(--gold); font-weight: 600; margin-bottom: 30px; letter-spacing: 5px;">愛，永不落幕</p>
-                我們最敬愛的 <span class="ink-bold">翁小奶 先生</span><br>
-                於民國 <span class="ink-bold">114 年 12 月 21 日</span><br>
-                在家人的溫暖陪伴下，安詳辭世。<br><br>
-                謹擇於民國 <span class="ink-bold">115 年 01 月 11 日</span>（星期日）<br>
-                假 台北市立殯儀館 【 至美一廳 】<br>
-                舉辦追思告別奠禮。<br><br>
-                您的陪伴，是給予我們最大的支持。
+            <div class="intro-passage">
+                最敬愛的 <span class="ink-focus">翁小奶 先生</span><br>
+                於民國 <span class="ink-focus">114 年 12 月 21 日</span> 安詳辭世。<br><br>
+                謹擇於民國 <span class="ink-focus">115 年 01 月 11 日</span>（星期日）<br>
+                假 台北市立殯儀館 【 至美一廳 】舉行追思奠禮。<br><br>
+                在此至誠邀約親友，送別翁先生最後一程。
             </div>
         </section>
 
-        <section class="reveal-el">
-            <div class="section-tag">奠禮詳情 ‧ INFO</div>
-            <div class="date-hero">
-                <div class="date-num">115.01.11</div>
-                <div class="date-day">星期日</div>
+        <section class="revealed">
+            <div class="meta-tag">奠禮詳情</div>
+            <div class="date-display-hero">
+                <div class="date-big-num">115.01.11</div>
+                <div class="date-week-label">星期日</div>
             </div>
 
-            <div class="card-box">
-                <span class="card-label">安靈地點 (牌位區)</span>
-                <div class="card-value">台北市立殯儀館蓮位堂 [ I1-01 ]</div>
-            </div>
-
-            <div class="card-box">
-                <span class="card-label">追思奠禮會場</span>
-                <div class="card-value">台北市立殯儀館 [ 至美一廳 ]</div>
-                <div class="time-split">
-                    <div class="time-cell" style="text-align: right; padding-right: 25px; border-right: 1px solid #f2f2f2;">
+            <div class="info-card-premium">
+                <span class="card-label-small">追思奠禮會場</span>
+                <div class="card-value-main">台北市立殯儀館 [ 至美一廳 ]</div>
+                <div class="time-split-grid">
+                    <div class="time-cell" style="text-align: right; padding-right: 20px; border-right: 1px dashed rgba(178, 151, 125, 0.4);">
                         <span>家奠禮</span><b>07:50</b>
                     </div>
-                    <div class="time-cell" style="text-align: left; padding-left: 25px;">
+                    <div class="time-cell" style="text-align: left; padding-left: 20px;">
                         <span>公奠禮</span><b>08:30</b>
                     </div>
                 </div>
             </div>
-
-            <a href="javascript:void(0)" onclick="alert('建議您手動將 115.01.11 07:50 加入行事曆。')" class="btn-ui">📅 加入行事曆提醒</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=台北市立殯儀館1" target="_blank" class="btn-ui" style="border-color:#eee; color:#aaa; font-size:12px;">📍 地圖導航</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=台北市立殯儀館15" target="_blank" style="text-decoration:none; display:block; padding:18px; border:1px solid var(--gold); color:var(--gold); border-radius:12px; text-align:center; font-size:14px; font-weight:700; letter-spacing:4px;">📍 Google 地圖導航會場</a>
         </section>
 
-        <section class="reveal-el">
-            <div class="section-tag">電子訃聞全文</div>
-            <img src="image/IMG_6120.jpeg" style="width: 100%; display: block; box-shadow: 0 15px 40px rgba(0,0,0,0.12);" onclick="openLightbox(this.src)">
-            <p style="text-align:center; font-size:12px; color:var(--gold); margin-top:25px; letter-spacing: 4px;">( 點擊圖片檢視完整內容 )</p>
+        <section class="revealed">
+            <div class="meta-tag">電子訃聞</div>
+            <img src="image/IMG_6120.jpeg" style="width: 100%; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.1);" onclick="openLightbox(this.src)">
         </section>
 
-        <section class="reveal-el">
-            <div class="section-tag">致贈花禮服務</div>
-            <button onclick="toggleCatalog()" class="btn-ui" style="background:#fff; cursor:pointer;">瀏覽致贈花籃樣式 CATALOG +</button>
-            <div id="flowerCatalog" class="catalog-grid">
-                <div class="catalog-item"><img src="image/花籃A款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 A 款</div><b style="color:var(--gold);">$2,500/對</b></div>
-                <div class="catalog-item"><img src="image/花籃B款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 B 款</div><b style="color:var(--gold);">$3,000/對</b></div>
-                <div class="catalog-item"><img src="image/花籃B款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 C 款</div><b style="color:var(--gold);">$3,500/對</b></div>
-                <div class="catalog-item"><img src="image/花籃B款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 D 款</div><b style="color:var(--gold);">$4,500/對</b></div>
-                <div class="catalog-item"><img src="image/花籃B款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 E 款</div><b style="color:var(--gold);">$5,000/對</b></div>
-                <div class="catalog-item"><img src="image/花籃B款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 F 款</div><b style="color:var(--gold);">$5,500/對</b></div>
-                <div class="catalog-item"><img src="image/花籃B款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 G 款</div><b style="color:var(--gold);">$6,000/對</b></div>
-                <div class="catalog-item"><img src="image/花籃B款.JPG" onclick="openLightbox(this.src)"><div style="font-size:13px; margin:8px 0 5px;">花籃 H 款</div><b style="color:var(--gold);">$6,500/對</b></div>
+        <section class="revealed">
+            <div class="meta-tag">致贈花禮</div>
+            <div class="flower-luxury-container">
+                <div class="flower-trigger-btn" id="flowerBtn" onclick="toggleFlower()">
+                    點選花籃查看樣式 <span>+</span>
+                </div>
+                <div class="flower-grid-hidden" id="flowerContent">
+                    <div class="flower-card-unit" onclick="openLightbox('image/花籃A款.JPG')">
+                        <img src="image/花籃A款.JPG">
+                        <div style="font-size:13px; font-weight:700;">高雅花籃 A 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$2,500 / 對</div>
+                    </div>
+                    <div class="flower-card-unit" onclick="openLightbox('image/花籃B款.JPG')">
+                        <img src="image/花籃B款.JPG">
+                        <div style="font-size:13px; font-weight:700;">莊嚴花籃 B 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$3,000 / 對</div>
+                    </div>
+                       <div class="flower-card-unit" onclick="openLightbox('image/花籃C款.JPG')">
+                        <img src="image/花籃C款.JPG">
+                        <div style="font-size:13px; font-weight:700;">莊嚴花籃 C 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$3,000 / 對</div>
+                    </div>
+                       <div class="flower-card-unit" onclick="openLightbox('image/花籃D款.JPG')">
+                        <img src="image/花籃D款.JPG">
+                        <div style="font-size:13px; font-weight:700;">莊嚴花籃 D 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$3,000 / 對</div>
+                    </div>
+                       <div class="flower-card-unit" onclick="openLightbox('image/花籃E款.JPG')">
+                        <img src="image/花籃E款.JPG">
+                        <div style="font-size:13px; font-weight:700;">莊嚴花籃 E 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$3,000 / 對</div>
+                    </div>
+                       <div class="flower-card-unit" onclick="openLightbox('image/花籃F款.JPG')">
+                        <img src="image/花籃F款.JPG">
+                        <div style="font-size:13px; font-weight:700;">莊嚴花籃 F 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$3,000 / 對</div>
+                    </div>
+                       <div class="flower-card-unit" onclick="openLightbox('image/花籃G款.JPG')">
+                        <img src="image/花籃G款.JPG">
+                        <div style="font-size:13px; font-weight:700;">莊嚴花籃 G 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$3,000 / 對</div>
+                    </div>
+                          <div class="flower-card-unit" onclick="openLightbox('image/花籃H款.JPG')">
+                        <img src="image/花籃H款.JPG">
+                        <div style="font-size:13px; font-weight:700;">莊嚴花籃 H 款</div>
+                        <div style="color:var(--gold); font-size:15px; font-weight:900;">$3,000 / 對</div>
+                    </div>
+                </div>
             </div>
-            <a href="https://line.me/ti/p/nZJmE8-b6X" class="btn-ui btn-line">透過 LINE 諮詢訂購</a>
         </section>
 
-        <div class="gratitude-area" id="thanksSection">
-            <div class="handwritten-line">致 每一位溫暖的您</div>
-            <div class="handwritten-line">謝謝這段日子的關懷與陪伴</div>
-            <div class="handwritten-line">每一句問候 每一份情誼</div>
-            <div class="handwritten-line">就像是穿透雲層的微光</div>
-            <div class="handwritten-line">溫柔地照亮了這份思念</div>
-            <div class="handwritten-line">這份真誠厚情 永誌於心</div>
+        <div class="gratitude-immersion-area" id="thanksNode">
+            <span class="ink-brush-line">致 每一位溫暖的您</span>
+            <span class="ink-brush-line">謝謝這段日子的關懷與陪伴</span>
+            <span class="ink-brush-line">每一句問候 每一份情誼</span>
+            <span class="ink-brush-line">就像是穿透雲層的微光</span>
+            <span class="ink-brush-line">溫柔地照亮了這份思念</span>
+            <span class="ink-brush-line">這份真誠厚情 永誌於心</span>
             
-            <div class="signature-seal">
-                <div class="sig-bold">家屬 全體家眷 叩謝</div>
-                <div class="red-seal">祥安<br>生命</div>
+            <div class="seal-signature-box">
+                <div class="signature-text">家屬 全體家眷 叩謝</div>
+                <div style="width: 58px; height: 58px; border: 2.5px solid var(--seal-red); color: var(--seal-red); font-size: 13px; font-weight: 900; display: flex; align-items: center; justify-content: center; transform: rotate(-5deg);">祥安<br>生命</div>
             </div>
         </div>
 
-        <div style="padding: 0 30px 60px;">
-            <div class="card-box" style="margin-bottom: 0; background: rgba(255,255,255,0.7); text-align: center;">
-                <span class="card-label">專業禮儀服務</span>
-                <div class="card-value">陳柏元 先生</div>
-                <div style="display: flex; gap: 12px; margin-top: 25px;">
-                    <a href="tel:0938179858" class="btn-ui" style="margin:0; flex:1; padding:15px; font-size:13px;">撥打電話</a>
-                    <a href="https://line.me/ti/p/nZJmE8-b6X" class="btn-ui btn-line" style="margin:0; flex:1; padding:15px; font-size:13px;">LINE 聯繫</a>
-                </div>
+        <div class="contact-premium-section">
+            <div class="meta-tag" style="margin-bottom:35px;">聯繫家屬或禮儀服務</div>
+            <div class="contact-grid">
+                <a href="tel:0938179858" class="contact-card-v2">
+                    <span class="contact-label">家屬聯繫代表</span>
+                    <span class="contact-name">翁家眷屬</span>
+                    <span class="contact-action-btn">點擊致電</span>
+                </a>
+                <a href="tel:0938179858" class="contact-card-v2">
+                    <span class="contact-label">承辦禮儀服務</span>
+                    <span class="contact-name">陳柏元 先生</span>
+                    <span class="contact-action-btn">點擊致電</span>
+                </a>
             </div>
+            <a href="https://line.me/ti/p/nZJmE8-b6X" class="btn-full-cta">透過 LINE 諮詢禮儀花禮</a>
         </div>
 
         <footer>
-            <div class="red-seal" style="margin: 0 auto 30px; width: 60px; height: 60px;">祥安<br>生命</div>
-            <div style="font-size: 26px; font-weight: 700; letter-spacing: 10px; color: var(--ink);">祥安生命有限公司</div>
-            <div style="width: 45px; height: 1px; background: var(--gold); margin: 25px auto; opacity: 0.4;"></div>
-            <div style="font-size: 10px; letter-spacing: 6px; color: var(--gold);">SHIANG AN LIFE SERVICE</div>
+            <div style="font-size: 24px; font-weight: 900; letter-spacing: 8px;">祥安生命有限公司</div>
+            <div style="font-size: 10px; letter-spacing: 5px; color: var(--gold); margin-top: 15px;">SHIANG AN LIFE SERVICE</div>
         </footer>
     </main>
 </div>
 
-<div class="float-nav">
+<div class="floating-shortcuts">
     <a href="tel:0938179858"><img src="image/24小時專線.png"></a>
     <a href="https://line.me/ti/p/nZJmE8-b6X"><img src="image/聯繫line.PNG"></a>
 </div>
 
-<div id="zoomOverlay" onclick="this.style.display='none'"><img id="zoomImg" src=""></div>
+<div id="immersion-lightbox" onclick="this.style.display='none'"><img id="zoom-src" src=""></div>
 
 <script>
-    // 滾動與章節呈現
-    const obs = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-                if(entry.target.id === 'thanksSection') {
-                    const lines = entry.target.querySelectorAll('.handwritten-line');
-                    lines.forEach((line, i) => setTimeout(() => line.classList.add('active'), i * 650));
-                    setTimeout(() => entry.target.querySelector('.signature-seal').classList.add('active'), lines.length * 700);
+                if(entry.target.id === 'thanksNode') {
+                    const lines = entry.target.querySelectorAll('.ink-brush-line');
+                    lines.forEach((l, i) => setTimeout(() => l.classList.add('active'), i * 750));
+                    setTimeout(() => entry.target.querySelector('.seal-signature-box').classList.add('active'), lines.length * 850);
                 }
             }
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('section, #thanksSection').forEach(el => obs.observe(el));
+    document.querySelectorAll('section, #thanksNode').forEach(el => io.observe(el));
 
-    // 音樂控制
-    const audio = document.getElementById('bgm');
-    const playMusic = () => {
-        audio.volume = 0.3;
-        audio.play().catch(() => {});
-        document.removeEventListener('click', playMusic);
-    };
-    document.addEventListener('click', playMusic);
-
-    function openLightbox(src) {
-        document.getElementById('zoomImg').src = src;
-        document.getElementById('zoomOverlay').style.display = 'flex';
+    function toggleFlower() {
+        const btn = document.getElementById('flowerBtn');
+        const content = document.getElementById('flowerContent');
+        btn.classList.toggle('active');
+        content.classList.toggle('open');
+        btn.innerHTML = content.classList.contains('open') ? '收合樣式 <span>+</span>' : '點選花籃查看樣式 <span>+</span>';
     }
 
-    function toggleCatalog() {
-        const box = document.getElementById('flowerCatalog');
-        box.style.display = (box.style.display === 'grid') ? 'none' : 'grid';
-    }
+    const bgm = document.getElementById('bgm-player');
+    const unlock = () => { bgm.volume = 0.3; bgm.play().catch(()=>{}); document.removeEventListener('click', unlock); };
+    document.addEventListener('click', unlock);
 
-    function copyData() {
-        const txt = "【翁小奶 先生 追思奠禮】\n日期：115.01.11 (星期日)\n地點：台北市立殯儀館 [至美一廳]\n時間：家奠 07:50 / 公奠 08:30\n詳情：https://24hour.台灣/Weng-Xiaonai";
-        navigator.clipboard.writeText(txt).then(() => alert("奠禮資訊已複製。"));
+    function openLightbox(s) {
+        document.getElementById('zoom-src').src = s;
+        document.getElementById('immersion-lightbox').style.display = 'flex';
     }
 </script>
 
