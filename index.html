@@ -15,9 +15,14 @@
             --taupe: #8d867e;        
             --vermilion: #a43e34;    
             --glass: rgba(255, 255, 255, 0.45);
+        } /* 補上閉合括號 */
+
+        @font-face {
+            font-family: 'ZF-Font';
+            src: url('Zf-Font.ttf') format('truetype');
+            font-display: swap;
         }
 
-        /* 全域重設：嚴格防溢出 */
         * { box-sizing: border-box; -webkit-font-smoothing: antialiased; margin: 0; padding: 0; }
         
         html, body { 
@@ -34,15 +39,17 @@
             position: relative;
         }
 
-        header { padding: 90px 20px 50px; text-align: center; }
-        .crest { width: 45px; margin-bottom: 25px; opacity: 0.6; }
-        .life-span { font-size: 10px; letter-spacing: 6px; color: var(--gold-leaf); margin-bottom: 12px; font-weight: 500; }
-        .grand-title { 
-            font-size: clamp(34px, 10vw, 46px); font-weight: 900; 
-            letter-spacing: 0.3em; text-indent: 0.3em;
+        header { text-align: center; padding: 50px 20px 20px; position: relative; z-index: 2; }
+        .top-logo { width: 100px; opacity: 0.85; margin-bottom: 20px; }
+        .top-action-bar { display: flex; justify-content: center; gap: 12px; }
+        .top-btn { 
+            display: flex; align-items: center; gap: 6px; padding: 10px 18px; 
+            border-radius: 25px; font-size: 13px; font-weight: 600; text-decoration: none; 
+            border: 1px solid rgba(180, 151, 122, 0.3); background: rgba(255,255,255,0.7); 
+            color: var(--ink); backdrop-filter: blur(5px);
         }
 
-        .portrait-wrap { width: 85%; margin: 0 auto 60px; position: relative; }
+        .portrait-wrap { width: 85%; margin: 0 auto 40px; position: relative; }
         .portrait-wrap img { 
             width: 100%; display: block; border-radius: 2px; 
             box-shadow: 0 20px 50px rgba(178, 151, 125, 0.15);
@@ -63,7 +70,6 @@
         .name-focus { color: var(--ink); font-weight: 900; font-size: 19px; border-bottom: 1.5px solid var(--gold-leaf); padding-bottom: 2px; }
         .location-box { color: var(--vermilion); font-weight: 900; letter-spacing: 1px; font-family: 'Noto Sans TC'; }
         
-        /* 儀式卡片與注意事項 */
         .glass-card { 
             background: var(--glass); 
             padding: 40px 20px; 
@@ -81,15 +87,9 @@
         .time-node span { font-size: 10px; color: var(--gold-leaf); display: block; letter-spacing: 3px; margin-bottom: 5px; }
         .time-node b { font-size: 26px; font-weight: 900; color: var(--ink); }
 
-        /* 注意事項清單 */
         .notice-list { list-style: none; text-align: left; display: inline-block; width: 100%; }
-        .notice-item { 
-            font-size: 14.5px; color: var(--taupe); margin-bottom: 15px; padding-left: 25px; position: relative; 
-            line-height: 1.8;
-        }
-        .notice-item::before { 
-            content: "✦"; position: absolute; left: 0; color: var(--gold-leaf); font-size: 12px;
-        }
+        .notice-item { font-size: 14.5px; color: var(--taupe); margin-bottom: 15px; padding-left: 25px; position: relative; line-height: 1.8; }
+        .notice-item::before { content: "✦"; position: absolute; left: 0; color: var(--gold-leaf); font-size: 12px; }
 
         .nav-link { 
             display: block; width: 100%; margin-top: 25px; padding: 20px; 
@@ -102,12 +102,9 @@
             width: 100%; padding: 18px; background: transparent; border: 1px dashed var(--gold-leaf);
             color: var(--gold-leaf); border-radius: 12px; font-size: 13px; font-weight: 700; letter-spacing: 2px;
         }
-        .vault-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; 
-            max-height: 0; overflow: hidden; transition: max-height 1.2s ease;
-        }
+        .vault-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-height: 0; overflow: hidden; transition: max-height 1.2s ease; }
         .vault-grid.open { max-height: 3000px; margin-top: 25px; }
-        .flower-unit { text-align: center; }
+        .flower-unit { text-align: center; cursor: pointer; }
         .flower-unit img { width: 100%; border-radius: 10px; }
 
         .gratitude-wrap { padding: 120px 24px; text-align: center; }
@@ -118,10 +115,7 @@
         }
         .brush-text.active { opacity: 1; transform: translateY(0); }
 
-        .signature-seal { 
-            margin-top: 90px; display: flex; align-items: center; justify-content: center;
-            gap: 20px; opacity: 0; transition: 2.5s;
-        }
+        .signature-seal { margin-top: 90px; display: flex; align-items: center; justify-content: center; gap: 20px; opacity: 0; transition: 2.5s; }
         .signature-seal.active { opacity: 1; }
         .sig-name { font-size: 26px; font-weight: 900; letter-spacing: 6px; }
         .seal-mark { 
@@ -132,10 +126,7 @@
 
         .contact-base { padding: 40px 24px 100px; }
         .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .contact-pill { 
-            background: #fff; padding: 25px 10px; border-radius: 15px; text-align: center;
-            text-decoration: none; border: 1px solid rgba(178,151,125,0.08); 
-        }
+        .contact-pill { background: #fff; padding: 25px 10px; border-radius: 15px; text-align: center; text-decoration: none; border: 1px solid rgba(178,151,125,0.08); }
         .pill-tag { font-size: 10px; color: var(--gold-leaf); letter-spacing: 2px; margin-bottom: 10px; display: block; }
         .pill-name { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 15px; display: block; }
         .pill-btn { font-size: 10px; color: var(--gold-leaf); border: 1px solid var(--gold-leaf); padding: 6px 16px; border-radius: 40px; }
@@ -157,10 +148,16 @@
 <audio id="bgm" loop><source src="Misson Part 1.mp3" type="audio/mp3"></audio>
 
 <div class="master-canvas">
-    <header>
-        <img src="image/logo.png" class="crest">
-        <div class="life-span">1935 — 2025</div>
-        <h1 class="grand-title">翁小奶 先生</h1>
+     <header>
+        <img src="image/logo.png" class="top-logo">
+        <div class="top-action-bar">
+            <a href="javascript:void(0)" class="top-btn" onclick="copyInfo()">
+                <img src="https://img.icons8.com/material-outlined/24/777777/copy.png" width="18"> 複製資訊
+            </a>
+            <a href="https://line.me/R/msg/text/?【追思】翁小奶先生 奠禮資訊%0ahttps://24hour.台灣/Weng-Xiaonai/index.html" class="top-btn">
+                <img src="https://img.icons8.com/material-rounded/24/06C755/line-me.png" width="18"> 分享親友
+            </a>
+        </div>
     </header>
 
     <main>
@@ -168,7 +165,7 @@
             <div class="portrait-wrap">
                 <img src="image/IMG_6759.jpeg" onclick="showBox(this.src)">
             </div>
-            <div style="text-align: center; margin-top: 50px;">
+            <div style="text-align: center;">
                 <p style="font-size: 18px; font-weight: 600; letter-spacing: 6px; margin-bottom: 35px; color: var(--gold-leaf);">愛．永誌不忘</p>
                 <div class="lyric-text">
                     我們最敬愛的 <span class="name-focus">翁小奶 先生</span><br>
@@ -207,7 +204,7 @@
                     <div class="time-node"><span>公奠禮</span><b>08:30</b></div>
                 </div>
             </div>
-            <a href="https://maps.google.com/?q=台北市懷愛館" class="nav-link">📍 開啟導航前往會場</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=台北市懷愛館" class="nav-link">📍 開啟導航前往會場</a>
         </section>
 
         <section>
@@ -221,9 +218,10 @@
             </div>
         </section>
 
-        <section>
-            <div class="label-tag">電子訃聞全文</div>
-            <img src="image/IMG_6845.jpeg" style="width: 100%; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.06);" onclick="showBox(this.src)">
+        <section style="text-align: center;">
+            <div class="label-tag">電子訃聞 ‧ 詳情參閱</div>
+            <img src="image/IMG_6833.jpeg" style="max-width: 85%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" onclick="showBox(this.src)">
+            <p style="font-size:12px; color:var(--gold-leaf); margin-top:15px; letter-spacing: 2px;">( 點擊圖片可放大閱讀全文 )</p>
         </section>
 
         <section>
@@ -235,10 +233,6 @@
                     <div class="flower-unit" onclick="showBox('image/花籃B款.JPG')"><img src="image/花籃B款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 B</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$3,000</div></div>
                     <div class="flower-unit" onclick="showBox('image/花籃C款.JPG')"><img src="image/花籃C款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 C</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$3,500</div></div>
                     <div class="flower-unit" onclick="showBox('image/花籃D款.JPG')"><img src="image/花籃D款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 D</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$4,500</div></div>
-                    <div class="flower-unit" onclick="showBox('image/花籃E款.JPG')"><img src="image/花籃E款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 E</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$5,000</div></div>
-                    <div class="flower-unit" onclick="showBox('image/花籃F款.JPG')"><img src="image/花籃F款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 F</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$5,500</div></div>
-                    <div class="flower-unit" onclick="showBox('image/花籃G款.JPG')"><img src="image/花籃G款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 G</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$6,000</div></div>
-                    <div class="flower-unit" onclick="showBox('image/花籃H款.JPG')"><img src="image/花籃H款.JPG"><div style="font-size:12px; margin-top:8px; font-weight:700;">莊嚴花籃 H</div><div style="font-size:12px; color:var(--gold-leaf); font-weight:900;">$6,500</div></div>
                 </div>
             </div>
         </section>
@@ -280,6 +274,7 @@
 <div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
 
 <script>
+    // 滾動偵測與動畫
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -295,6 +290,7 @@
 
     document.querySelectorAll('section, #thanks').forEach(s => observer.observe(s));
 
+    // 切換花禮展開
     function toggleF() {
         const grid = document.getElementById('fGrid');
         const btn = document.getElementById('fBtn');
@@ -302,15 +298,27 @@
         btn.innerText = grid.classList.contains('open') ? "- 收合花禮樣式" : "+ 點擊展開精選花禮樣式";
     }
 
+    // 燈箱放大功能
     function showBox(src) {
         document.getElementById('lb-img').src = src;
         document.getElementById('lightbox').style.display = 'flex';
     }
 
+    // 複製資訊功能
+    function copyInfo() {
+        const text = "【追思奠禮】翁小奶 先生\n日期：115年01月11日\n地點：台北市懷愛館 景仰樓 3F 至美一廳\n家奠：07:50\n公奠：08:30";
+        navigator.clipboard.writeText(text).then(() => {
+            alert('奠禮資訊已複製到剪貼簿');
+        });
+    }
+
+    // 自動播放背景音樂
     document.addEventListener('click', () => {
         const audio = document.getElementById('bgm');
-        audio.volume = 0.2;
-        audio.play().catch(() => {});
+        if(audio.paused) {
+            audio.volume = 0.2;
+            audio.play().catch(() => {});
+        }
     }, { once: true });
 </script>
 
