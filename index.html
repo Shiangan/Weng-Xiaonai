@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
     <style>
-        * {
-            -webkit-text-size-adjust: none !important;
-            text-size-adjust: none !important;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
+        /* 2. 全局硬性補丁：強制所有手機忽略系統字體調整，這是「不打槍」的關鍵 */
+        html, body {
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
+            touch-action: manipulation;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: #1a1a1a; /* 外部底色深邃 */
+            margin: 0; padding: 0;
         }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
     </style>
 
     <meta property="og:image" content="https://24hour.xn--kpry57d/Weng-Xiaonai/image/Write.png">
     <meta property="og:title" content="【追思】翁小奶 先生 雲端訃告">
-    <meta property="og:description" content="感謝親友的陪伴與關懷，翁小奶先生已化作星辰，留下我們滿滿的祝福。">
-    <meta property="og:url" content="https://24hour.台灣/Weng-Xiaonai">
+    <meta property="og:description" content="愛，從未遠離。翁小奶先生已化作星辰，守護我們。">
     
     <link rel="icon" href="image/logo.png" type="image/png">
     <title>永恆思念：翁小奶 先生</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
     
     <style>
         @font-face { font-family: 'ZF-Font'; src: url('Zf-Font.ttf') format('truetype'); font-display: swap; }
@@ -30,92 +34,85 @@
             --paper: #f9f7f2;
             --ink: #1a1a1a;
             --gold: #a68b6a;
-            --sub-ink: #555555;
-            --seal-red: #a52a2a;
-            --max-w: 480px; /* 鎖定在最佳手機寬度，不論螢幕多大都維持此佈局 */
+            --max-w: 480px; /* 全球移動端標準黃金寬度 */
         }
 
-        body { 
-            margin: 0; padding: 0; background-color: #f0f0f0; 
-            font-family: 'Noto Serif TC', serif; color: var(--ink); 
-            width: 100%; overflow-x: hidden;
-        }
-
-        /* 核心包裝器：維持所有設備比例一致 */
+        /* 3. 完美容器鎖定 */
         .app-wrapper { 
             width: 100%; max-width: var(--max-w); margin: 0 auto; 
             background-color: var(--paper); min-height: 100vh; position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,0.1); overflow-x: hidden;
+            box-shadow: 0 0 80px rgba(0,0,0,0.8);
         }
 
-        /* 頁首標題：名字最大化補丁 */
-        .header-top { text-align: center; padding: 60px 20px 30px; }
-        .top-logo { width: 95px; height: auto; margin-bottom: 25px; }
-        .years-tag { font-size: 14px; letter-spacing: 8px; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+        /* 4. 名字極致呈現：絕對不跑版技術 */
+        .header-top { text-align: center; padding: 70px 20px 45px; }
+        .top-logo { width: 100px; height: auto; margin-bottom: 30px; }
+        .years-tag { font-size: 16px; letter-spacing: 10px; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
         
-        /* 名字區：絕對不換行，根據螢幕自動擠壓到極限 */
         .name-wrapper { 
-            font-size: clamp(45px, 14vw, 72px); 
-            font-weight: 900; letter-spacing: 0.1em; 
-            margin: 15px auto; text-align: center; white-space: nowrap; 
-            width: 100%; display: block; overflow: hidden;
-            line-height: 1.2;
+            font-size: clamp(52px, 15vw, 80px); /* 名字極限大氣 */
+            font-weight: 900; letter-spacing: 4px; 
+            margin: 20px auto; text-align: center; 
+            white-space: nowrap; width: 100%; display: block; 
+            line-height: 1; color: #000;
         }
 
-        section { padding: 50px 25px; width: 100%; opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+        /* 5. 分段佈局高度鎖定 */
+        section { padding: 55px 25px; opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
         section.visible { opacity: 1; transform: translateY(0); }
-        .section-title { font-size: 13px; letter-spacing: 6px; color: var(--gold); font-weight: 700; margin-bottom: 35px; text-align: center; display: block; }
+        .section-title { font-size: 15px; letter-spacing: 6px; color: var(--gold); font-weight: 900; margin-bottom: 45px; text-align: center; display: block; }
+        .section-title::after { content: ""; display: block; width: 40px; height: 2px; background: var(--gold); margin: 12px auto; }
 
-        .fluid-img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 8px 25px rgba(0,0,0,0.06); }
+        .fluid-img { width: 100%; height: auto; border-radius: 6px; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        /* 儀程卡片鎖定 */
-        .date-hero { font-size: 90px; font-weight: 900; line-height: 0.85; text-align: center; margin-bottom: 15px; letter-spacing: -2px; }
-        .date-sub { font-size: 15px; color: var(--sub-ink); display: block; text-align: center; letter-spacing: 1px; }
+        /* 6. 儀程詳情完美排版 */
+        .date-hero { font-size: 115px; font-weight: 900; line-height: 0.8; text-align: center; color: #000; margin-bottom: 20px; letter-spacing: -4px; }
+        .date-sub { font-size: 17px; color: #333; display: block; text-align: center; font-weight: 700; letter-spacing: 1px; }
         
         .info-card { 
-            background: #fff; border: 1px solid #ececec; border-radius: 12px; 
-            padding: 30px 20px; margin: 30px 0; text-align: center; 
+            background: #fff; border: 1px solid #f0f0f0; border-radius: 16px; 
+            padding: 40px 20px; margin: 40px 0; text-align: center; 
         }
-        .info-label { font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 3px; margin-bottom: 12px; display: block; }
-        .info-val { font-size: clamp(19px, 5vw, 23px); font-weight: 600; line-height: 1.6; }
+        .info-label { font-size: 13px; color: var(--gold); font-weight: 900; letter-spacing: 3px; margin-bottom: 15px; display: block; }
+        .info-val { font-size: 24px; font-weight: 700; line-height: 1.6; color: #000; }
 
-        .time-grid { display: flex; justify-content: space-around; border-top: 1px dashed #ddd; padding-top: 35px; margin-top: 20px; }
-        .time-item { text-align: center; }
-        .time-item span { font-size: 13px; color: var(--sub-ink); display: block; margin-bottom: 8px; }
-        .time-item b { font-size: 48px; font-weight: 600; color: var(--gold); line-height: 1; }
+        .time-grid { display: flex; justify-content: space-around; border-top: 1.5px solid #f7f7f7; padding-top: 40px; margin-top: 30px; }
+        .time-item span { font-size: 14px; color: #888; font-weight: 600; margin-bottom: 10px; display: block; }
+        .time-item b { font-size: 62px; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
 
-        /* 交通與花籃：固定雙欄不跑版 */
+        /* 7. 花禮目錄完美對齊 (8款) */
         .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
-        .flower-item { background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #f2f2f2; }
-        .flower-item span { display: block; font-size: 14px; font-weight: 700; margin-top: 10px; }
-        .flower-price { color: var(--gold) !important; font-size: 12px !important; margin-top: 4px !important; font-weight: 400 !important; }
+        .flower-item { background: #fff; padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #f2f2f2; }
+        .flower-item img { width: 100%; height: auto; border-radius: 6px; }
+        .flower-item span { display: block; font-size: 16px; font-weight: 700; margin-top: 12px; color: #000; }
+        .flower-price { color: var(--gold) !important; font-size: 13px !important; margin-top: 5px !important; font-weight: 600 !important; }
 
-        /* 致謝文直書鎖定：維持每一列間距一致 */
-        .calligraphy-area { padding: 90px 0; width: 100%; display: flex; justify-content: center; background: rgba(255,255,255,0.3); }
-        .ink-wrap { display: flex; flex-direction: row-reverse; justify-content: center; width: 100%; min-height: 480px; }
+        /* 8. 致謝文垂直美學 */
+        .calligraphy-area { padding: 100px 0; width: 100%; display: flex; justify-content: center; }
+        .ink-wrap { display: flex; flex-direction: row-reverse; justify-content: center; width: 100%; min-height: 500px; }
         .ink-line { 
             writing-mode: vertical-rl; font-family: 'ZF-Font', serif; 
-            font-size: 26px; letter-spacing: 0.35em; line-height: 1.6; 
-            opacity: 0; filter: blur(10px); white-space: nowrap; margin: 0 14px;
+            font-size: 30px; letter-spacing: 0.5em; line-height: 1.6; 
+            opacity: 0; filter: blur(10px); white-space: nowrap; margin: 0 18px;
         }
-        .ink-last-line { margin-top: 100px !important; }
+        .ink-last-line { margin-top: 120px !important; }
         .ink-anim { animation: inkFade 3s forwards ease-out; }
         @keyframes inkFade { to { opacity: 1; filter: blur(0); } }
 
-        /* 按鈕系統 */
-        .btn-action { display: block; width: 100%; padding: 22px; border: 1.5px solid var(--gold); color: var(--gold); text-align: center; text-decoration: none; font-size: 16px; letter-spacing: 5px; font-weight: 700; border-radius: 8px; margin: 25px 0; }
-        
-        .contact-box { background: #fff; padding: 35px 25px; border-radius: 15px; margin-bottom: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
-        .btn-call { background: var(--gold); flex: 1; padding: 18px; border-radius: 8px; font-size: 15px; font-weight: 700; text-align: center; text-decoration: none; color: #fff; display: block; }
-        .btn-line { background: #06C755; flex: 1; padding: 18px; border-radius: 8px; font-size: 15px; font-weight: 700; text-align: center; text-decoration: none; color: #fff; display: block; }
+        /* 9. 互動元件 */
+        .btn-action { display: block; width: 100%; padding: 24px; border: 2px solid var(--gold); color: var(--gold); text-align: center; text-decoration: none; font-size: 17px; letter-spacing: 6px; font-weight: 900; border-radius: 15px; margin: 30px 0; background: #fff; transition: 0.3s; }
+        .contact-box { background: #fff; padding: 45px 30px; border-radius: 20px; margin-bottom: 60px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
+        .btn-call, .btn-line { padding: 20px; border-radius: 12px; font-size: 16px; font-weight: 900; text-align: center; text-decoration: none; color: #fff; display: block; flex: 1; }
+        .btn-call { background: var(--gold); }
+        .btn-line { background: #06C755; }
 
-        .float-nav { position: fixed; bottom: 35px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 15px; }
-        .float-nav img { width: 58px; height: auto; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); }
+        .float-nav { position: fixed; bottom: 40px; right: 25px; z-index: 1000; display: flex; flex-direction: column; gap: 20px; }
+        .float-nav img { width: 66px; height: auto; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.4)); }
         
         #lightbox { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,0.98); display:none; justify-content:center; align-items:center; z-index:10000; }
-        #lightbox img { max-width: 92%; max-height: 90%; object-fit: contain; }
+        #lightbox img { max-width: 95%; max-height: 92%; object-fit: contain; }
 
-        footer { padding: 60px 20px 120px; text-align: center; border-top: 1px solid #eee; background: #fff; }
+        footer { padding: 80px 20px 150px; text-align: center; background: #fff; border-top: 1px solid #f0f0f0; }
     </style>
 </head>
 <body>
@@ -127,19 +124,19 @@
         <img src="image/logo.png" class="top-logo">
         <div class="years-tag">1935 — 2025</div>
         <div class="name-wrapper auto-fit-text">翁小奶 先生</div>
-        <div style="display: flex; justify-content: center; gap: 12px; margin-top: 30px;">
-            <button onclick="copyText()" style="padding: 10px 22px; border: 1px solid #ccc; border-radius: 25px; font-size: 13px; background: #fff; color: #555;">複製追思資訊</button>
-            <button onclick="window.location.href='https://line.me/R/msg/text/?【追思】翁小奶先生 https://24hour.台灣/Weng-Xiaonai'" style="padding: 10px 22px; border: 1px solid #06C755; border-radius: 25px; font-size: 13px; color: #06C755; background: #fff;">分享給親友</button>
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 40px;">
+            <button onclick="copyText()" style="padding: 14px 26px; border: 1.5px solid #ddd; border-radius: 40px; background: #fff; font-weight: 700; font-size: 14px; color: #333;">複製資訊</button>
+            <button onclick="window.location.href='https://line.me/R/msg/text/?【追思】翁小奶先生%0ahttps://24hour.台灣/Weng-Xiaonai'" style="padding: 14px 26px; border: 1.5px solid #06C755; border-radius: 40px; color: #06C755; background: #fff; font-weight: 700; font-size: 14px;">分享親友</button>
         </div>
     </header>
 
     <main style="padding: 0 20px;">
         <section class="visible"> 
             <img src="image/IMG_6759.jpeg" class="fluid-img" onclick="zoom(this.src)">
-            <div style="text-align: center; margin-top: 50px;">
-                <p style="font-size: 20px; font-weight: 600; letter-spacing: 6px; color: var(--gold); margin-bottom: 25px;">愛，從未遠離</p>
-                <div style="font-size: 17px; color: var(--sub-ink); line-height: 2.5; text-align: justify; word-break: break-all;">
-                    我們最敬愛的 <span style="font-weight: 900; color: #000; border-bottom: 1.5px solid var(--gold);">翁小奶 先生</span> 於 114 年 12 月 21 日安詳離世。他的一生豁達溫厚，留給我們無盡的思念。<br><br>
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="font-size: 22px; font-weight: 900; letter-spacing: 8px; color: var(--gold); margin-bottom: 35px;">愛，從未遠離</p>
+                <div style="font-size: 19px; color: #222; line-height: 2.8; text-align: justify; letter-spacing: 0.5px;">
+                    我們最敬愛的 <span style="font-weight: 900; color: #000; border-bottom: 3px solid var(--gold);">翁小奶 先生</span> 於 114 年 12 月 21 日安詳離世。他的一生豁達溫厚，留給我們無盡的思念與慈愛。<br><br>
                     謹擇於民國115年01月11日（星期日）假台北市懷愛館 景仰樓 3F 【至美一廳】舉辦追思告別奠禮。
                 </div>
             </div>
@@ -148,8 +145,8 @@
         <section>
             <span class="section-title">追思奠禮 ‧ 儀程詳情</span>
             <div class="date-hero">01.11</div>
-            <span class="date-sub">西元 2026 / 國曆一月十一日 (星期日)</span>
-            <span class="date-sub" style="font-size: 12px; margin-top: 8px; opacity: 0.8;">農曆 乙巳年 十一月廿三日</span>
+            <span class="date-sub">國曆 2026 / 一月十一日 (星期日)</span>
+            <span class="date-sub" style="font-size: 14px; margin-top: 10px; opacity: 0.7;">農曆 乙巳年 十一月廿三日</span>
             
             <div class="info-card">
                 <span class="info-label">安靈地點 (牌位區)</span>
@@ -162,16 +159,16 @@
             </div>
             
             <div class="time-grid">
-                <div class="time-item"><span>家奠禮時間</span><b>07:50</b></div>
-                <div class="time-item"><span>公奠禮時間</span><b>08:30</b></div>
+                <div class="time-item"><span>家奠禮</span><b>07:50</b></div>
+                <div class="time-item"><span>公奠禮</span><b>08:30</b></div>
             </div>
-            <a href="javascript:void(0)" class="btn-action" onclick="addCal()">加入手機行事曆提醒</a>
+            <a href="javascript:void(0)" class="btn-action" onclick="addCal()">⏰ 加入手機行事曆提醒</a>
         </section>
 
         <section>
             <span class="section-title">電子訃聞 ‧ 全文參閱</span>
-            <img src="image/IMG_6845.jpeg" class="fluid-img" style="width: 100%; cursor: zoom-in;" onclick="zoom(this.src)">
-            <p style="text-align: center; font-size: 12px; color: var(--gold); margin-top: 15px;">( 點擊圖片可放大檢視細節 )</p>
+            <img src="image/IMG_6845.jpeg" class="fluid-img" onclick="zoom(this.src)" style="cursor: zoom-in;">
+            <p style="text-align: center; font-size: 13px; color: var(--gold); margin-top: 15px; font-weight: 700;">( 點擊圖片可放大檢視細節 )</p>
         </section>
 
         <section>
@@ -182,24 +179,24 @@
                 <img src="image/交通00002.GIF" class="fluid-img" onclick="zoom(this.src)">
                 <img src="image/交通00001.GIF" class="fluid-img" onclick="zoom(this.src)">
             </div>
-            <a href="https://maps.google.com/?q=台北市懷愛館" target="_blank" class="btn-action" style="color:#777; border-color:#eee;">📍 開啟 Google 地圖導航</a>
+            <a href="https://maps.google.com/?q=台北市懷愛館" target="_blank" class="btn-action" style="border-color: #eee; color: #999;">📍 開啟 Google 地圖導航</a>
         </section>
 
         <section style="text-align: center;">
             <span class="section-title">致贈花禮樣式</span>
-            <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px;">
-                <div onclick="toggleF()" style="cursor:pointer; font-weight: 700; font-size: 18px; color: var(--gold); border-bottom: 2px solid var(--gold);">樣式目錄 +</div>
-                <div onclick="location.href='https://line.me/ti/p/nZJmE8-b6X'" style="cursor:pointer; color: #06C755; font-weight: 700; font-size: 18px;">LINE 訂購</div>
+            <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 40px;">
+                <div onclick="toggleF()" style="cursor:pointer; font-weight: 900; font-size: 20px; color: var(--gold); border-bottom: 3px solid;">樣式目錄 +</div>
+                <div onclick="location.href='https://line.me/ti/p/nZJmE8-b6X'" style="cursor:pointer; color: #06C755; font-weight: 900; font-size: 20px;">LINE 訂購</div>
             </div>
             <div id="flowerG" class="grid-2col" style="display:none;">
-                <div class="flower-item"><img src="image/花籃A款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 A 款</span><span class="flower-price">$2,500</span></div>
-                <div class="flower-item"><img src="image/花籃B款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 B 款</span><span class="flower-price">$3,000</span></div>
-                <div class="flower-item"><img src="image/花籃C款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 C 款</span><span class="flower-price">$3,500</span></div>
-                <div class="flower-item"><img src="image/花籃D款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 D 款</span><span class="flower-price">$4,500</span></div>
-                <div class="flower-item"><img src="image/花籃E款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 E 款</span><span class="flower-price">$5,000</span></div>
-                <div class="flower-item"><img src="image/花籃F款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 F 款</span><span class="flower-price">$5,500</span></div>
-                <div class="flower-item"><img src="image/花籃G款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 G 款</span><span class="flower-price">$6,000</span></div>
-                <div class="flower-item"><img src="image/花籃H款.JPG" class="fluid-img" onclick="zoom(this.src)"><span>花籃 H 款</span><span class="flower-price">$6,500</span></div>
+                <div class="flower-item"><img src="image/花籃A款.JPG" onclick="zoom(this.src)"><span>花籃 A 款</span><span class="flower-price">$2,500</span></div>
+                <div class="flower-item"><img src="image/花籃B款.JPG" onclick="zoom(this.src)"><span>花籃 B 款</span><span class="flower-price">$3,000</span></div>
+                <div class="flower-item"><img src="image/花籃C款.JPG" onclick="zoom(this.src)"><span>花籃 C 款</span><span class="flower-price">$3,500</span></div>
+                <div class="flower-item"><img src="image/花籃D款.JPG" onclick="zoom(this.src)"><span>花籃 D 款</span><span class="flower-price">$4,500</span></div>
+                <div class="flower-item"><img src="image/花籃E款.JPG" onclick="zoom(this.src)"><span>花籃 E 款</span><span class="flower-price">$5,000</span></div>
+                <div class="flower-item"><img src="image/花籃F款.JPG" onclick="zoom(this.src)"><span>花籃 F 款</span><span class="flower-price">$5,500</span></div>
+                <div class="flower-item"><img src="image/花籃G款.JPG" onclick="zoom(this.src)"><span>花籃 G 款</span><span class="flower-price">$6,000</span></div>
+                <div class="flower-item"><img src="image/花籃H款.JPG" onclick="zoom(this.src)"><span>花籃 H 款</span><span class="flower-price">$6,500</span></div>
             </div>
         </section>
 
@@ -208,20 +205,20 @@
                 <div class="ink-line" style="animation-delay: 0.5s;">致 每一位溫暖的您</div>
                 <div class="ink-line" style="animation-delay: 1.8s;">謝謝這段日子的關懷與陪伴</div>
                 <div class="ink-line" style="animation-delay: 3.1s;">這份真誠厚情 永誌於心</div>
-                <div class="ink-line ink-last-line" style="animation-delay: 4.4s;">家屬 <b style="border-bottom: 2px solid var(--gold);">全體家眷 叩謝</b></div>
+                <div class="ink-line ink-last-line" style="animation-delay: 4.4s;">家屬 <b style="border-bottom: 3px solid var(--gold);">全體家眷 叩謝</b></div>
             </div>
         </div>
 
         <div class="contact-box">
-            <div style="text-align: center; border-bottom: 1px solid #f5f5f5; padding-bottom: 25px; margin-bottom: 25px;">
+            <div style="text-align: center; border-bottom: 2px solid #f9f9f9; padding-bottom: 35px; margin-bottom: 35px;">
                 <span class="info-label">家屬聯繫代表</span>
-                <div style="font-size: 24px; font-weight: 700;">素方</div>
-                <a href="tel:0915110611" class="btn-call" style="margin-top:20px; background: var(--ink);">撥打家屬電話</a>
+                <div style="font-size: 28px; font-weight: 700;">素方</div>
+                <a href="tel:0915110611" class="btn-call" style="margin-top:25px; background: #222;">撥打家屬電話</a>
             </div>
             <div style="text-align: center;">
                 <span class="info-label">祥安生命 ‧ 24H 禮儀專員</span>
-                <div style="font-size: 20px; font-weight: 700; margin-bottom: 20px;">陳柏元 先生</div>
-                <div style="display:flex; gap:12px;">
+                <div style="font-size: 24px; font-weight: 700; margin-bottom: 30px;">陳柏元 先生</div>
+                <div style="display:flex; gap:15px;">
                     <a href="tel:0938179858" class="btn-call">撥打專員</a>
                     <a href="https://line.me/ti/p/nZJmE8-b6X" class="btn-line">LINE 諮詢</a>
                 </div>
@@ -229,36 +226,34 @@
         </div>
 
         <footer>
-            <div style="width: 50px; height: 50px; border: 2.5px solid var(--seal-red); display: flex; align-items: center; justify-content: center; border-radius: 6px; transform: rotate(-3deg); margin: 0 auto 20px;">
-                <span style="font-family: 'ZF-Font', serif; font-size: 14px; color: var(--seal-red); font-weight: 900; line-height: 1.2;">祥安<br>生命</span>
+            <div style="width: 60px; height: 60px; border: 4px solid var(--seal-red); display: flex; align-items: center; justify-content: center; border-radius: 10px; transform: rotate(-3deg); margin: 0 auto 25px;">
+                <span style="font-family: 'ZF-Font', serif; font-size: 16px; color: var(--seal-red); font-weight: 900; line-height: 1.2;">祥安<br>生命</span>
             </div>
-            <div style="font-size: 20px; font-weight: 900; letter-spacing: 5px; color: var(--ink);">祥安生命有限公司</div>
-            <div style="font-size: 11px; color: var(--gold); margin-top: 8px; font-weight: 600; letter-spacing: 2px;">SHIANG AN LIFE SERVICE</div>
+            <div style="font-size: 22px; font-weight: 900; letter-spacing: 6px;">祥安生命有限公司</div>
+            <div style="font-size: 12px; color: #999; margin-top: 12px; letter-spacing: 3px;">PROFESSIONAL FUNERAL SERVICE</div>
         </footer>
     </main>
 </div>
 
 <div class="float-nav">
-    <a href="tel:0938179858"><img src="image/24小時專線.png" alt="24H"></a>
-    <a href="https://line.me/ti/p/nZJmE8-b6X"><img src="image/聯繫line.PNG" alt="LINE"></a>
+    <a href="tel:0938179858"><img src="image/24小時專線.png" alt="Call"></a>
+    <a href="https://line.me/ti/p/nZJmE8-b6X"><img src="image/聯繫line.PNG" alt="Line"></a>
 </div>
 
 <div id="lightbox" onclick="this.style.display='none'"><img id="lbi" src=""></div>
 
 <script>
-    // 核心鎖定：自動縮放名字以適應所有寬度
+    // 終極鎖定：自動縮放名字以確保在極窄手機也不換行
     function autoFitName() {
         const el = document.querySelector('.auto-fit-text');
         const container = el.parentElement;
         let fontSize = parseInt(window.getComputedStyle(el).fontSize);
-        // 如果名字溢出，持續縮小直到剛好滿版
-        while (el.scrollWidth > container.offsetWidth * 0.95 && fontSize > 14) {
+        while (el.scrollWidth > container.offsetWidth * 0.95 && fontSize > 16) {
             fontSize--;
             el.style.fontSize = fontSize + 'px';
         }
     }
 
-    // 捲動揭示動畫
     const obs = new IntersectionObserver(es => es.forEach(e => {
         if(e.isIntersecting) {
             e.target.classList.add('visible');
@@ -267,21 +262,17 @@
     }), { threshold: 0.1 });
     document.querySelectorAll('section, .calligraphy-area').forEach(s => obs.observe(s));
 
-    // 背景音樂啟動
     const bgm = document.getElementById('bgm');
-    const startAudio = () => { if(bgm.paused) { bgm.volume = 0.3; bgm.play().catch(()=>{}); } };
+    const startAudio = () => { if(bgm.paused) { bgm.volume = 0.4; bgm.play().catch(()=>{}); } };
     ['touchstart', 'click', 'scroll'].forEach(ev => document.addEventListener(ev, startAudio, {once: true}));
 
-    // 功能函數
     function zoom(src) { document.getElementById('lbi').src = src; document.getElementById('lightbox').style.display = 'flex'; }
     function toggleF() { const g = document.getElementById('flowerG'); g.style.display = (g.style.display==='grid'?'none':'grid'); }
     
     function copyText() {
-        const text = "【追思奠禮 ‧ 翁小奶 先生】\n日期：2026/01/11(日)\n地點：台北市懷愛館 景仰樓 3F 至美一廳\n牌位：景行樓 3F 蓮位堂 [I1-01]";
-        const textarea = document.createElement("textarea");
-        textarea.value = text; document.body.appendChild(textarea); textarea.select();
-        document.execCommand('copy'); document.body.removeChild(textarea);
-        alert("追思資訊已成功複製");
+        const text = "【追思奠禮 ‧ 翁小奶 先生】\n日期：2026/01/11(日)\n時間：07:50 家奠 / 08:30 公奠\n地點：台北市懷愛館 景仰樓 3F 至美一廳";
+        const t = document.createElement("textarea"); t.value = text; document.body.appendChild(t); t.select();
+        document.execCommand('copy'); document.body.removeChild(t); alert("追思資訊已成功複製");
     }
 
     function addCal() {
