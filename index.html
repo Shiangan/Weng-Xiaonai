@@ -188,28 +188,41 @@
             </div>
             <a href="javascript:void(0)" class="btn-action" onclick="addCal()">加入手機行事曆提醒</a>
         </section>
-
+        
         <section>
             <span class="section-title">交通指引</span>
-            <div class="info-card" style="padding: 10px; overflow: hidden;">
-                <img src="https://maps.googleapis.com/maps/api/staticmap?center=台北市懷愛館&zoom=16&size=400x200&key=YOUR_KEY" class="fluid-img">
+            <div class="info-card" style="padding: 10px; overflow: hidden; border: 1px solid var(--premium-gold);">
+                <a href="https://maps.google.com/?cid=10413156383852146951&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=25.0135172,121.5530253&zoom=16&size=400x250&markers=color:red%7C25.0135172,121.5530253&key=YOUR_API_KEY" 
+                         class="fluid-img" 
+                         alt="台北市懷愛館地圖">
+                </a>
             </div>
+            
             <div class="transport-box">
                 <div class="transport-item">
                     <span class="trans-title">📍 會場地址</span>
-                    <span class="trans-desc">台北市大安區辛亥路三段 330 號</span>
+                    <span class="trans-desc">台北市大安區辛亥路三段 330 號 (台北市懷愛館)</span>
                 </div>
                 <div class="transport-item">
                     <span class="trans-title">🚗 自行開車</span>
-                    <span class="trans-desc">由國道3號萬芳交流道下，往辛亥路方向。會場附有地下停車場。</span>
+                    <span class="trans-desc">行經國道3號於「萬芳交流道」下，往木柵/辛亥路方向行駛。場內設有地下停車場，建議提早由辛亥路入口進入。</span>
                 </div>
                 <div class="transport-item">
-                    <span class="trans-title">🚌 懷愛館接駁車</span>
-                    <span class="trans-desc">可自捷運公館站(3號出口)、六張犁站搭乘專用接駁專車。</span>
+                    <span class="trans-title">🚌 懷愛館接駁專車</span>
+                    <span class="trans-desc">
+                        1. 捷運公館站（3號出口）<br>
+                        2. 捷運六張犁站<br>
+                        3. 捷運忠孝復興站（2號出口）<br>
+                        皆有免費懷愛館接駁車(S31、S32、S33)直達會場。
+                    </span>
                 </div>
-                <a href="https://maps.app.goo.gl/7HUEhafRjQD133pt8?g_st=ic" class="btn-nav">開啟 Google Maps 導覽</a>
+                <a href="https://maps.google.com/?cid=10413156383852146951&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" class="btn-nav" style="text-decoration: none; display: block; background: var(--premium-gold); color: white; padding: 20px; font-weight: 700; border-radius: 4px; margin-top: 15px;">
+                    🧭 開啟 Google Maps 導航
+                </a>
             </div>
         </section>
+
 
         <section style="text-align: center;">
             <span class="section-title">致贈花禮樣式</span>
